@@ -1,0 +1,516 @@
+<!doctype html>
+<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plan Z · Day-of-Flight · June 3 2026</title>
+<style>
+:root{
+  --bg:#0b0d12;--panel:#171a22;--panel2:#11141b;
+  --text:#f6efe5;--muted:#8a9ab0;--muted2:#b9afa4;
+  --hot:#ff6961;--amber:#ffc857;--green:#6bcb77;
+  --blue:#9db7ff;--lock:#ff9d9d;--purple:#c5b3ff;
+  --line:#2a3040;--line2:#1e2430
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;
+  font-size:16px;line-height:1.4
+}
+.wrap{max-width:680px;margin:0 auto;padding:10px 12px 100px}
+
+/* ── STICKY HEADER ── */
+.top{
+  position:sticky;top:0;z-index:10;
+  background:linear-gradient(180deg,var(--bg) 82%,transparent)
+}
+.hero{
+  background:linear-gradient(160deg,#181d28,#141820);
+  border:1px solid var(--line);border-radius:16px;
+  padding:14px 14px 12px;margin-bottom:4px
+}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--amber);text-transform:uppercase}
+.hero-title{font-size:20px;font-weight:900;margin:5px 0 4px;line-height:1.2}
+.hero-sub{font-size:12px;color:var(--muted2);line-height:1.5}
+.progress{height:5px;background:#1e2738;border-radius:99px;margin:10px 0 8px;overflow:hidden}
+.bar{height:100%;width:68%;background:linear-gradient(90deg,var(--amber),var(--hot));border-radius:99px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  font-size:11px;font-weight:800;letter-spacing:.04em;
+  border:1px solid var(--line);border-radius:99px;
+  padding:5px 9px;background:#0f1219
+}
+.chip.hot{color:var(--hot);border-color:#3d1c1a}
+.chip.amber{color:var(--amber);border-color:#3d2e0a}
+.chip.green{color:var(--green);border-color:#1a3b20}
+.chip.lock{color:var(--lock);border-color:#3d1c1c}
+.chip.blue{color:var(--blue);border-color:#1a2640}
+
+/* ── SECTIONS ── */
+details{
+  border:1px solid var(--line);background:var(--panel);
+  border-radius:14px;margin:8px 0;overflow:hidden;
+  transition:box-shadow .15s
+}
+details[open]{box-shadow:0 6px 24px #0009}
+summary{
+  list-style:none;cursor:pointer;
+  padding:13px 14px;
+  display:flex;gap:10px;align-items:center;
+  justify-content:space-between;
+  user-select:none
+}
+summary::-webkit-details-marker{display:none}
+summary::marker{display:none}
+.s-left{min-width:0;flex:1}
+.s-title{font-size:16px;font-weight:900;display:flex;align-items:center;gap:7px}
+.s-icon{font-size:14px}
+.s-source{font-size:11px;color:var(--muted);margin-top:2px}
+.s-badge{
+  font-size:11px;font-weight:800;border:1px solid var(--line);
+  border-radius:99px;padding:4px 8px;white-space:nowrap;flex-shrink:0
+}
+
+/* section color themes */
+details.hot  summary .s-title{color:var(--hot)}
+details.hot  .s-badge{color:var(--hot);border-color:#3d1c1a}
+details.amber summary .s-title{color:var(--amber)}
+details.amber .s-badge{color:var(--amber);border-color:#3d2e0a}
+details.locked summary .s-title{color:var(--lock)}
+details.locked .s-badge{color:var(--lock);border-color:#3d1c1c}
+details.business summary .s-title{color:var(--blue)}
+details.business .s-badge{color:var(--blue);border-color:#1a2640}
+details.done  summary .s-title{color:var(--green)}
+details.done  .s-badge{color:var(--green);border-color:#1a3b20}
+details.low   summary .s-title{color:var(--muted2)}
+details.low   .s-badge{color:var(--muted2)}
+
+/* ── ROWS ── */
+.items{padding:0 12px 12px;display:flex;flex-direction:column;gap:0}
+.row{
+  display:grid;grid-template-columns:28px 1fr;
+  gap:10px;padding:11px 0;
+  border-top:1px solid var(--line2);
+  align-items:start
+}
+.row:first-child{border-top:none}
+/* interactive checkbox */
+.cb{
+  width:22px;height:22px;flex-shrink:0;
+  border:2px solid #3a4455;border-radius:7px;
+  cursor:pointer;position:relative;
+  background:transparent;margin-top:1px;
+  -webkit-appearance:none;appearance:none
+}
+.cb:checked{
+  background:linear-gradient(135deg,#1e4d24,#186b28);
+  border-color:var(--green)
+}
+.cb:checked::after{
+  content:'✓';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  color:var(--green);font-size:13px;font-weight:900
+}
+.cb:disabled{
+  opacity:.5;cursor:not-allowed
+}
+.row.done-item .cb{
+  background:linear-gradient(135deg,#1e4d24,#186b28);
+  border-color:var(--green)
+}
+.row.done-item .cb::after{
+  content:'✓';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  color:var(--green);font-size:13px;font-weight:900
+}
+.row.locked-item .cb{
+  border-color:#4a2020;background:#1a0f0f;cursor:not-allowed
+}
+.row.locked-item .cb::after{
+  content:'🔒';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-55%);
+  font-size:10px
+}
+.task{font-size:15px;font-weight:600;line-height:1.35}
+.row.done-item .task{text-decoration:line-through;color:var(--muted);text-decoration-color:#3a5040}
+.row.locked-item .task{color:#cc9898}
+.meta{margin-top:6px;display:flex;gap:5px;flex-wrap:wrap}
+.pill{
+  font-size:11px;color:var(--muted);
+  border:1px solid #2a3040;border-radius:99px;
+  padding:3px 7px
+}
+.pill.gate{color:#ffc8c8}
+.pill.guardrail{color:#ffc857;border-color:#3d2e0a}
+.pill.ok{color:var(--green);border-color:#1a3b20}
+
+/* ── LOCAL-ONLY NOTICE ── */
+.local-notice{
+  font-size:11px;color:var(--muted);
+  background:#0f1219;border:1px solid var(--line);
+  border-radius:8px;padding:6px 10px;
+  margin:4px 12px 8px;text-align:center
+}
+
+/* ── FOOTER ── */
+.footer{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#0b0d12ef;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  padding:10px 12px max(env(safe-area-inset-bottom),10px)
+}
+.footer-inner{
+  max-width:680px;margin:0 auto;
+  font-weight:900;font-size:13px;color:var(--amber);
+  display:flex;align-items:center;justify-content:space-between;gap:8px
+}
+.footer-sub{font-size:11px;color:var(--muted);font-weight:400;flex-shrink:0}
+
+/* ── SAFETY RAIL ── */
+.safety{
+  font-size:11px;color:var(--muted);
+  border:1px solid var(--line);border-radius:8px;
+  padding:8px 10px;margin:8px 0
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:390px){
+  .hero-title{font-size:18px}
+  .task{font-size:14px}
+  .s-title{font-size:15px}
+  .wrap{padding:8px 10px 96px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- STICKY HEADER -->
+  <div class="top">
+    <div class="hero">
+      <div class="kicker">PLAN Z · DAY-OF-FLIGHT · JUNE 3 2026</div>
+      <div class="hero-title">Sister gift → suitcase close → duty-free alcohol. In that order.</div>
+      <div class="hero-sub">
+        Updated 2026-06-02 20:50 EDT &nbsp;·&nbsp; Flight: Moscow ~10 pm June 3
+        &nbsp;·&nbsp; Checkboxes are local-only (your phone)
+      </div>
+      <div class="progress"><div class="bar"></div></div>
+      <div class="chips">
+        <span class="chip hot">3 NOW</span>
+        <span class="chip amber">2 AIRPORT</span>
+        <span class="chip lock">3 LOCKED</span>
+        <span class="chip blue">XOTWOD →</span>
+        <span class="chip green">4 DONE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 1. NOW ══ SISTER_GIFT_NOW -->
+  <details class="hot" open>
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">🔴</span> NOW · before leaving</div>
+        <div class="s-source">top priority · user-confirmed</div>
+      </div>
+      <span class="s-badge">3 open</span>
+    </summary>
+    <div class="local-notice">Checkboxes save to this phone only · not synced · not approval</div>
+    <div class="items">
+      <div class="row" id="r-sister">
+        <input type="checkbox" class="cb persistent" data-key="sister-gift" aria-label="Sister gift">
+        <div>
+          <div class="task">Buy sister gift — or decide airport/duty-free fallback if city shopping is no longer realistic.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill ok">No approval gate</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="r-suitcase">
+        <input type="checkbox" class="cb persistent" data-key="suitcase-close" aria-label="Close suitcase">
+        <div>
+          <div class="task">Close suitcase: passport/ID, wallet/cards, meds, chargers/adapters, glasses, Moscow clothes, gifts already bought.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill ok">No approval gate</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="r-bag">
+        <input type="checkbox" class="cb persistent" data-key="gifts-bag" aria-label="Gifts into Moscow bag">
+        <div>
+          <div class="task">Put all bought gifts into one "going to Moscow" bag or zone — nothing gets left behind.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill ok">No approval gate</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 2. AIRPORT / DUTY-FREE ══ -->
+  <details class="amber" open>
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">✈️</span> AIRPORT · only these</div>
+        <div class="s-source">user-confirmed · do at airport only</div>
+      </div>
+      <span class="s-badge">2 items</span>
+    </summary>
+    <div class="local-notice">Checkboxes save to this phone only · not synced · not approval</div>
+    <div class="items">
+      <div class="row">
+        <input type="checkbox" class="cb persistent" data-key="airport-alcohol" aria-label="Duty-free alcohol">
+        <div>
+          <div class="task">Buy alcohol for sister's husband at duty-free.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill gate">Gate: purchase by Maria</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <input type="checkbox" class="cb persistent" data-key="airport-sister-fallback" aria-label="Sister gift fallback">
+        <div>
+          <div class="task">If sister gift is still unresolved at airport: buy least-bad duty-free backup. Don't spiral.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill gate">Gate: purchase by Maria</span>
+            <span class="pill">Status: FALLBACK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 3. LOCKED · APPROVAL_GATES_LOCKED ══ -->
+  <details class="locked">
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">🔒</span> LOCKED · approval required</div>
+        <div class="s-source">visible so nothing is forgotten · gated</div>
+      </div>
+      <span class="s-badge">LOCKED</span>
+    </summary>
+    <div class="items">
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">Any card payment, AMEX offer activation, account recovery, or financial-portal action.</div>
+          <div class="meta">
+            <span class="pill gate">Level 5 approval required</span>
+            <span class="pill">Status: LOCKED</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">Any XOTWOD shipping label, fulfillment, customer/supplier/carrier message, refund, stock order, inventory/product edit, or ad spend.</div>
+          <div class="meta">
+            <span class="pill gate">Level 5 approval required</span>
+            <span class="pill">Status: LOCKED</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">Any public dashboard redeploy, share-link update, or live publishing.</div>
+          <div class="meta">
+            <span class="pill gate">Level 5 / public exposure</span>
+            <span class="pill">Status: LOCKED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 4. XOTWOD STATUS ONLY · XOTWOD_STATUS_ONLY ══ -->
+  <details class="business">
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">📦</span> XOTWOD · status only</div>
+        <div class="s-source">do not let this eat airport time · read-only</div>
+      </div>
+      <span class="s-badge">tap to view</span>
+    </summary>
+    <div class="items">
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">#1055 Eduardo: ship-prep. Needs moissanite Silver / Tennis Chain 22in 3mm — exact photos + weight/dimensions required before any label approval.</div>
+          <div class="meta">
+            <span class="pill">Owner: Husband/Maria</span>
+            <span class="pill gate">Label/message/fulfillment GATED</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">#1054 Ana: label created, no carrier intake. Find original parcel/drop proof before any resend.</div>
+          <div class="meta">
+            <span class="pill">Owner: Husband/Maria</span>
+            <span class="pill gate">Resend/customer action GATED</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">#1050 Caige: customs/docs exception. Gather customs packet; no blind resend.</div>
+          <div class="meta">
+            <span class="pill">Owner: Husband/Maria</span>
+            <span class="pill gate">Carrier/customer action GATED</span>
+            <span class="pill">Status: OPEN</span>
+          </div>
+        </div>
+      </div>
+      <div class="row done-item">
+        <input type="checkbox" class="cb" disabled aria-label="done">
+        <div>
+          <div class="task">#1056 Kyla: delivered June 1. Do not reship.</div>
+          <div class="meta">
+            <span class="pill">Owner: Hermes/Maria</span>
+            <span class="pill ok">Status: DELIVERED · DONE</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <div>
+          <div class="task">3 CZ tennis units: truthful CZ-only fast-ship ads are OK. Not a moissanite substitute unless explicitly approved.</div>
+          <div class="meta">
+            <span class="pill guardrail">Ads/stock/customer claims GATED</span>
+            <span class="pill">Status: GUARDRAIL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 5. DONE · MIND_EYE_DONE ══ -->
+  <details class="done">
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">✅</span> DONE · keep momentum</div>
+        <div class="s-source">user-confirmed · verified</div>
+      </div>
+      <span class="s-badge">✓ 4 done</span>
+    </summary>
+    <div class="items">
+      <div class="row done-item">
+        <input type="checkbox" class="cb" disabled aria-label="done">
+        <div>
+          <div class="task">Mind Eye appointment completed + glasses sorted.</div>
+          <div class="meta">
+            <span class="pill ok">Status: DONE</span>
+          </div>
+        </div>
+      </div>
+      <div class="row done-item">
+        <input type="checkbox" class="cb" disabled aria-label="done">
+        <div>
+          <div class="task">All expected gifts bought except sister gift.</div>
+          <div class="meta">
+            <span class="pill ok">Status: DONE</span>
+          </div>
+        </div>
+      </div>
+      <div class="row done-item">
+        <input type="checkbox" class="cb" disabled aria-label="done">
+        <div>
+          <div class="task">Credit cards paid or scheduled.</div>
+          <div class="meta">
+            <span class="pill ok">Status: DONE · verified file</span>
+          </div>
+        </div>
+      </div>
+      <div class="row done-item">
+        <input type="checkbox" class="cb" disabled aria-label="done">
+        <div>
+          <div class="task">AMEX export/audit completed for visible cards; canceled-card months unavailable.</div>
+          <div class="meta">
+            <span class="pill">Owner: Hermes</span>
+            <span class="pill ok">Status: DONE · verified file</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 6. LATER ══ -->
+  <details class="low">
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">⏳</span> LATER · after landing</div>
+        <div class="s-source">parked on purpose · not today</div>
+      </div>
+      <span class="s-badge">parked</span>
+    </summary>
+    <div class="items">
+      <div class="row">
+        <input type="checkbox" class="cb" disabled aria-label="parked">
+        <div>
+          <div class="task">Full XOTWOD ads strategy and stock reorder optimization.</div>
+          <div class="meta">
+            <span class="pill gate">Approval required</span>
+            <span class="pill">Status: PARKED</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <input type="checkbox" class="cb" disabled aria-label="parked">
+        <div>
+          <div class="task">Job pipeline, salary research, materials queue, non-flight admin.</div>
+          <div class="meta">
+            <span class="pill">Status: PARKED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="safety">
+    Safety rule: ticking a checkbox does not authorize payments, offers, shipping labels, customer/supplier/carrier messages, stock orders, ad spend, product edits, inventory changes, or publishing. All gated actions still require explicit approval.
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- FIXED FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <span>Sister gift → suitcase → duty-free. No rabbit holes.</span>
+    <span class="footer-sub">Jun 3 · ~10 pm Moscow</span>
+  </div>
+</div>
+
+<script>
+// localStorage persistence for interactive checkboxes
+// Keys are stored under planz_2026_06_03_ prefix
+(function(){
+  const PREFIX = 'planz_2026_06_03_';
+  document.querySelectorAll('.cb.persistent').forEach(function(cb){
+    var key = PREFIX + cb.dataset.key;
+    // restore state
+    if(localStorage.getItem(key) === '1') cb.checked = true;
+    // save on change
+    cb.addEventListener('change', function(){
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+    });
+  });
+})();
+</script>
+</body>
+</html>
