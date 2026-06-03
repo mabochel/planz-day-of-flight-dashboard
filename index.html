@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW MAYA_COUCH_URGENT UK_ETA_PENDING XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED SANITIZED_OPEN_LOOPS -->
+<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW MAYA_COUCH_URGENT UK_ETA_PENDING PACKING_LIST_EXPANDED SERTRALINE_NOW ALDO_PICKUP_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED SANITIZED_OPEN_LOOPS -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -192,19 +192,19 @@ details.low   .s-badge{color:var(--muted2)}
   <div class="top">
     <div class="hero">
       <div class="kicker">PLAN Z · DAY-OF-FLIGHT · JUNE 3 2026</div>
-      <div class="hero-title">Maya couch deal → sister gift → suitcase close. No rabbit holes.</div>
+      <div class="hero-title">Sertraline → ALDO bag → pack/close suitcase. No rabbit holes.</div>
       <div class="hero-sub">
-        Updated 2026-06-03 15:18 EDT &nbsp;·&nbsp; Flight: Moscow ~10 pm June 3
+        Updated 2026-06-03 15:58 EDT · Flight tonight ~11:30 pm
         &nbsp;·&nbsp; Checkboxes are local-only (your phone)
       </div>
       <div class="progress"><div class="bar"></div></div>
       <div class="chips">
-        <span class="chip hot">5 NOW</span>
-        <span class="chip amber">2 AIRPORT</span>
+        <span class="chip hot">3 DO NOW</span>
+        <span class="chip amber">4 BEFORE AIRPORT</span>
         <span class="chip lock">SAFETY RULES</span>
         <span class="chip blue">XOTWOD →</span>
         <span class="chip green">4 DONE</span>
-        <span class="chip blue">OPEN LOOPS</span>
+        <span class="chip blue">PACKING</span>
       </div>
     </div>
   </div>
@@ -213,67 +213,44 @@ details.low   .s-badge{color:var(--muted2)}
   <details class="hot" open>
     <summary>
       <div class="s-left">
-        <div class="s-title"><span class="s-icon">🔴</span> NOW · before leaving</div>
-        <div class="s-source">top priority · user-confirmed</div>
+        <div class="s-title"><span class="s-icon">🔴</span> DO NOW · before shops/banks close</div>
+        <div class="s-source">hardest deadlines first · user-confirmed at 4 pm travel day</div>
       </div>
-      <span class="s-badge">5 open</span>
+      <span class="s-badge">3 urgent</span>
     </summary>
     <div class="local-notice">Checkboxes save to this phone only · not synced · not approval</div>
     <div class="items">
 
-      <div class="row locked-item" id="r-maya-couch">
-        <input type="checkbox" class="cb" disabled aria-label="Maya couch purchase requires approval">
+      <div class="row" id="r-sertraline">
+        <input type="checkbox" class="cb persistent" data-key="sertraline-refill" aria-label="Sertraline refill">
         <div>
-          <div class="task">URGENT: Maya sofa bed at Small Space Plus — sale $1,299 vs $2,299, available online. Decide colour + approve purchase/reservation before the deal disappears.</div>
+          <div class="task">Sertraline refill — call/go immediately. This is the tightest deadline before pharmacy closes.</div>
           <div class="meta">
-            <span class="pill">Small Space Plus Toronto</span>
-            <span class="pill"><a href="https://www.smallspaceplus.com/products/maya" style="color:inherit">MAYA product link</a></span>
-            <span class="pill gate">Purchase/payment GATED</span>
+            <span class="pill">Owner: Maria</span>
+            <span class="pill guardrail">Hard deadline</span>
+            <span class="pill">Status: DO FIRST</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="r-aldo">
+        <input type="checkbox" class="cb persistent" data-key="aldo-seadreamm" aria-label="ALDO Seadreamm pickup">
+        <div>
+          <div class="task">ALDO Seadreamm bag pickup + butterfly charm — confirm hours, then grab before store closes.</div>
+          <div class="meta">
+            <span class="pill">Owner: Maria</span>
+            <span class="pill guardrail">Sister gift</span>
             <span class="pill">Status: URGENT</span>
           </div>
         </div>
       </div>
-      <div class="row" id="r-sister">
-        <input type="checkbox" class="cb persistent" data-key="sister-gift" aria-label="Sister gift">
+      <div class="row" id="r-rbc">
+        <input type="checkbox" class="cb persistent" data-key="rbc-cash" aria-label="RBC cash">
         <div>
-          <div class="task">Buy sister gift — or decide airport/duty-free fallback if city shopping is no longer realistic.</div>
+          <div class="task">Call RBC for USD/EUR cash if branch timing still works. If not, skip — airport/Moscow exchange is worse rate but not a blocker.</div>
           <div class="meta">
             <span class="pill">Owner: Maria</span>
-            <span class="pill ok">No approval gate</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
-        </div>
-      </div>
-      <div class="row" id="r-suitcase">
-        <input type="checkbox" class="cb persistent" data-key="suitcase-close" aria-label="Close suitcase">
-        <div>
-          <div class="task">Close suitcase: passport/ID, wallet/cards, meds, chargers/adapters, glasses, Moscow clothes, gifts already bought.</div>
-          <div class="meta">
-            <span class="pill">Owner: Maria</span>
-            <span class="pill ok">No approval gate</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
-        </div>
-      </div>
-      <div class="row locked-item" id="r-uk-eta">
-        <input type="checkbox" class="cb" disabled aria-label="UK ETA approval still pending / monitored">
-        <div>
-          <div class="task">Travel-doc watch: UK ETA approval email has not surfaced yet. Heartbeat monitor is active; if you already have the approval elsewhere, keep it with passport/boarding docs.</div>
-          <div class="meta">
-            <span class="pill warn">UK ETA</span>
-            <span class="pill">Owner: Hermes watch + Maria verify</span>
-            <span class="pill warn">Status: PENDING / WATCHING</span>
-          </div>
-        </div>
-      </div>
-      <div class="row" id="r-bag">
-        <input type="checkbox" class="cb persistent" data-key="gifts-bag" aria-label="Gifts into Moscow bag">
-        <div>
-          <div class="task">Put all bought gifts into one "going to Moscow" bag or zone — nothing gets left behind.</div>
-          <div class="meta">
-            <span class="pill">Owner: Maria</span>
-            <span class="pill ok">No approval gate</span>
-            <span class="pill">Status: OPEN</span>
+            <span class="pill">Optional if time survives</span>
+            <span class="pill">Status: FLEX</span>
           </div>
         </div>
       </div>
@@ -284,35 +261,63 @@ details.low   .s-badge{color:var(--muted2)}
   <details class="amber" open>
     <summary>
       <div class="s-left">
-        <div class="s-title"><span class="s-icon">✈️</span> AIRPORT · only these</div>
-        <div class="s-source">user-confirmed · do at airport only</div>
+        <div class="s-title"><span class="s-icon">🟡</span> BEFORE AIRPORT · leave by ~8 pm</div>
+        <div class="s-source">finish at home / on phone · no rabbit holes</div>
       </div>
-      <span class="s-badge">2 items</span>
+      <span class="s-badge">4 items</span>
     </summary>
     <div class="local-notice">Checkboxes save to this phone only · not synced · not approval</div>
     <div class="items">
-      <div class="row">
-        <input type="checkbox" class="cb persistent" data-key="airport-alcohol" aria-label="Duty-free alcohol">
+      <div class="row" id="r-pack-close">
+        <input type="checkbox" class="cb persistent" data-key="pack-close" aria-label="Pack and close suitcase">
         <div>
-          <div class="task">Buy alcohol for sister's husband at duty-free.</div>
-          <div class="meta">
-            <span class="pill">Owner: Maria</span>
-            <span class="pill gate">Gate: purchase by Maria</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
+          <div class="task">Pack and close suitcase. Use the packing checklist below; do not let optional errands eat this block.</div>
+          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill guardrail">Non-negotiable</span><span class="pill">Status: OPEN</span></div>
         </div>
       </div>
-      <div class="row">
-        <input type="checkbox" class="cb persistent" data-key="airport-sister-fallback" aria-label="Sister gift fallback">
+      <div class="row" id="r-charge">
+        <input type="checkbox" class="cb persistent" data-key="charge-everything" aria-label="Charge everything">
         <div>
-          <div class="task">If sister gift is still unresolved at airport: buy least-bad duty-free backup. Don't spiral.</div>
-          <div class="meta">
-            <span class="pill">Owner: Maria</span>
-            <span class="pill gate">Gate: purchase by Maria</span>
-            <span class="pill">Status: FALLBACK</span>
-          </div>
+          <div class="task">Charge everything: phone, laptop, watch, Oculus, headphones, portable charger.</div>
+          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill">Status: OPEN</span></div>
         </div>
       </div>
+      <div class="row" id="r-vpn-maps">
+        <input type="checkbox" class="cb persistent" data-key="vpn-maps-cyrillic" aria-label="VPN maps address">
+        <div>
+          <div class="task">Install VPN, download offline Yandex/Google maps, save accommodation address in Cyrillic.</div>
+          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill">Status: OPEN</span></div>
+        </div>
+      </div>
+      <div class="row" id="r-olaplex">
+        <input type="checkbox" class="cb persistent" data-key="olaplex" aria-label="Olaplex optional">
+        <div>
+          <div class="task">Olaplex No. 6 only if same-day pickup works. If not, skip — not a trip blocker.</div>
+          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill">Optional</span><span class="pill">Status: FLEX</span></div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+
+  <!-- ══ 2B. PACKING CHECKLIST · PACKING_LIST_EXPANDED ══ -->
+  <details class="amber" open>
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">🧳</span> PACKING · suitcase + carry-on</div>
+        <div class="s-source">expanded from Maria's pasted travel-day list · public-safe</div>
+      </div>
+      <span class="s-badge">checklist</span>
+    </summary>
+    <div class="local-notice">Keep meds, passports, cash, wallet, chargers, and power bank ON you. Public-safe wording: prescription names mostly collapsed.</div>
+    <div class="items">
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-meds" aria-label="Pack meds"><div><div class="task">Meds in carry-on, original packaging + Rx labels: all prescriptions/full supply, sertraline refill, sleep aids/melatonin.</div><div class="meta"><span class="pill guardrail">Carry-on</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-docs-money" aria-label="Pack documents and money"><div><div class="task">Documents/money: Canadian passport, Russian external + internal passports, Swiss passport, Priority Pass, credit cards, cash, zip wallet.</div><div class="meta"><span class="pill guardrail">Do not check</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-tech" aria-label="Pack tech"><div><div class="task">Tech: laptop + charger, phone charger, watch charger, mouse/pad, Sennheiser headphones, adapter Type C/F 220V, Oculus + charger, portable charger, portable monitor if worth it.</div><div class="meta"><span class="pill">Power banks carry-on</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-gifts" aria-label="Pack gifts"><div><div class="task">Gifts: Seadreamm bag + charm, SkinGenie gua sha, derma roller, XO chain, duty-free alcohol plan. Cross-check gifts dashboard if needed.</div><div class="meta"><span class="pill">One Moscow gift zone</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-toiletries" aria-label="Pack toiletries"><div><div class="task">Toiletries/makeup: toothbrush/paste, hairbrush, deodorant, shampoo/conditioner if taking, skincare, makeup/remover, razor, sunscreen, perfume, tampons, glasses + backup, sunglasses, nail kit/tweezers in checked bag.</div><div class="meta"><span class="pill">Liquids & sharp items rules</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-clothes" aria-label="Pack clothing"><div><div class="task">Clothing: 6-7 tops, 2-3 dresses, 2 trousers + 1-2 shorts/skirts, 1-2 light sweaters/cardigans, rain layer, underwear/socks 8+ days, swimsuit, pajamas, sneakers, cherry platforms, comfy everyday shoes, compact umbrella.</div><div class="meta"><span class="pill">Pack light; shop there</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-flight" aria-label="Pack flight carry-on"><div><div class="task">Flight/carry-on: neck pillow, sleeping mask, earplugs, empty water bottle, snacks, chargers/power bank, sleep med within reach, sex toy battery out if detachable.</div><div class="meta"><span class="pill guardrail">Carry-on essentials</span><span class="pill">Status: OPEN</span></div></div></div>
     </div>
   </details>
 
@@ -490,7 +495,7 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row">
         <input type="checkbox" class="cb" disabled aria-label="project status">
         <div>
-          <div class="task">Plan Z: flight-day physical lock — sister gift, suitcase close, duty-free alcohol, and UK ETA approval watch.</div>
+          <div class="task">Plan Z: flight-day physical lock — sertraline refill, ALDO sister gift pickup, suitcase packing, charge/VPN/maps, duty-free alcohol, and UK ETA approval watch.</div>
           <div class="meta">
             <span class="pill guardrail">Today only</span>
             <span class="pill">Status: ACTIVE</span>
