@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED -->
+<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED SANITIZED_OPEN_LOOPS -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -194,7 +194,7 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="kicker">PLAN Z · DAY-OF-FLIGHT · JUNE 3 2026</div>
       <div class="hero-title">Sister gift → suitcase close → duty-free alcohol. In that order.</div>
       <div class="hero-sub">
-        Updated 2026-06-02 20:50 EDT &nbsp;·&nbsp; Flight: Moscow ~10 pm June 3
+        Updated 2026-06-02 21:23 EDT &nbsp;·&nbsp; Flight: Moscow ~10 pm June 3
         &nbsp;·&nbsp; Checkboxes are local-only (your phone)
       </div>
       <div class="progress"><div class="bar"></div></div>
@@ -204,6 +204,7 @@ details.low   .s-badge{color:var(--muted2)}
         <span class="chip lock">3 LOCKED</span>
         <span class="chip blue">XOTWOD →</span>
         <span class="chip green">4 DONE</span>
+        <span class="chip blue">OPEN LOOPS</span>
       </div>
     </div>
   </div>
@@ -450,7 +451,82 @@ details.low   .s-badge{color:var(--muted2)}
     </div>
   </details>
 
-  <!-- ══ 6. LATER ══ -->
+
+  <!-- ══ 6. SANITIZED OPEN LOOPS · SANITIZED_OPEN_LOOPS ══ -->
+  <details class="business">
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">🧭</span> OPEN LOOPS · sanitized</div>
+        <div class="s-source">public-safe project map · full details stay in Maria_OS</div>
+      </div>
+      <span class="s-badge">tap to view</span>
+    </summary>
+    <div class="local-notice">Public-safe only: no customer addresses, private finance details, or account instructions here.</div>
+    <div class="items">
+      <div class="row">
+        <input type="checkbox" class="cb" disabled aria-label="project status">
+        <div>
+          <div class="task">Plan Z: flight-day physical lock — sister gift, suitcase close, duty-free alcohol.</div>
+          <div class="meta">
+            <span class="pill guardrail">Today only</span>
+            <span class="pill">Status: ACTIVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="business gated">
+        <div>
+          <div class="task">XOTWOD: daily read-only workflow exists; order/shipping exceptions are tracked off-dashboard and stay gated.</div>
+          <div class="meta">
+            <span class="pill gate">Actions gated</span>
+            <span class="pill">Status: TRACKED</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="business gated">
+        <div>
+          <div class="task">Skin Genie: app/product validation and Walmart ops are tracked separately; not a flight-day rabbit hole.</div>
+          <div class="meta">
+            <span class="pill gate">Public/live/account actions gated</span>
+            <span class="pill">Status: PARKED TODAY</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="career gated">
+        <div>
+          <div class="task">Career/job search: engine stabilization and scout pipeline continue separately; no applications or outreach here.</div>
+          <div class="meta">
+            <span class="pill gate">Submissions/outreach gated</span>
+            <span class="pill">Status: PARKED TODAY</span>
+          </div>
+        </div>
+      </div>
+      <div class="row locked-item">
+        <input type="checkbox" class="cb" disabled aria-label="finance gated">
+        <div>
+          <div class="task">Finance/cards: payments/scheduling closed by Maria; remaining audits are parked unless explicitly reopened.</div>
+          <div class="meta">
+            <span class="pill gate">Financial/account actions gated</span>
+            <span class="pill">Status: MOSTLY CLOSED</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <input type="checkbox" class="cb" disabled aria-label="source of truth">
+        <div>
+          <div class="task">Source of truth: Maria_OS project files, run folders, OPEN_LOOPS, ARTIFACT_REGISTRY, and cron jobs — not this public page.</div>
+          <div class="meta">
+            <span class="pill ok">Dashboard is a cockpit</span>
+            <span class="pill">Status: REFERENCE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ══ 7. LATER ══ -->
   <details class="low">
     <summary>
       <div class="s-left">
