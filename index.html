@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW MAYA_COUCH_URGENT UK_ETA_PENDING PACKING_LIST_EXPANDED SERTRALINE_NOW ALDO_PICKUP_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED SANITIZED_OPEN_LOOPS -->
+<!-- QA markers: PLANZ_DASHBOARD_READY MIND_EYE_DONE SISTER_GIFT_NOW UK_ETA_PENDING PACKING_LIST_EXPANDED ADHD_AIRPORT_COCKPIT PUBLIC_SAFE_CUTLINE CRITICAL_MED_NOW ALDO_PICKUP_NOW XOTWOD_STATUS_ONLY APPROVAL_GATES_LOCKED SANITIZED_OPEN_LOOPS -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -35,8 +35,6 @@ body{
 .kicker{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--amber);text-transform:uppercase}
 .hero-title{font-size:20px;font-weight:900;margin:5px 0 4px;line-height:1.2}
 .hero-sub{font-size:12px;color:var(--muted2);line-height:1.5}
-.progress{height:5px;background:#1e2738;border-radius:99px;margin:10px 0 8px;overflow:hidden}
-.bar{height:100%;width:68%;background:linear-gradient(90deg,var(--amber),var(--hot));border-radius:99px}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{
   font-size:11px;font-weight:800;letter-spacing:.04em;
@@ -91,15 +89,15 @@ details.low   .s-badge{color:var(--muted2)}
 /* ── ROWS ── */
 .items{padding:0 12px 12px;display:flex;flex-direction:column;gap:0}
 .row{
-  display:grid;grid-template-columns:28px 1fr;
-  gap:10px;padding:11px 0;
+  display:grid;grid-template-columns:40px 1fr;
+  gap:10px;padding:12px 0;
   border-top:1px solid var(--line2);
   align-items:start
 }
 .row:first-child{border-top:none}
 /* interactive checkbox */
 .cb{
-  width:22px;height:22px;flex-shrink:0;
+  width:32px;height:32px;flex-shrink:0;
   border:2px solid #3a4455;border-radius:7px;
   cursor:pointer;position:relative;
   background:transparent;margin-top:1px;
@@ -132,7 +130,7 @@ details.low   .s-badge{color:var(--muted2)}
 .row.locked-item .cb::after{
   content:'🔒';position:absolute;
   top:50%;left:50%;transform:translate(-50%,-55%);
-  font-size:10px
+  font-size:13px
 }
 .task{font-size:15px;font-weight:600;line-height:1.35}
 .row.done-item .task{text-decoration:line-through;color:var(--muted);text-decoration-color:#3a5040}
@@ -146,6 +144,63 @@ details.low   .s-badge{color:var(--muted2)}
 .pill.gate{color:#ffc8c8}
 .pill.guardrail{color:#ffc857;border-color:#3d2e0a}
 .pill.ok{color:var(--green);border-color:#1a3b20}
+.pill.drop{color:var(--muted2);border-color:#3a3a4a;background:#1a1820;letter-spacing:.05em}
+.pill.now{color:var(--hot);border-color:#3d1c1a;font-weight:900}
+.pill.hot{color:var(--hot);border-color:#3d1c1a}
+
+/* ── COCKPIT CHAIN ── */
+.cockpit{
+  display:flex;align-items:stretch;gap:3px;
+  margin:10px 0 6px;justify-content:space-between
+}
+.step{
+  flex:1;min-width:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:7px 2px;border-radius:10px;
+  background:#0f1219;border:1px solid var(--line);
+  text-align:center
+}
+.step.active{
+  background:linear-gradient(160deg,#3d1c1a,#2a1418);
+  border-color:var(--hot);
+  box-shadow:0 0 0 1px var(--hot) inset
+}
+.step-num{
+  font-size:9px;font-weight:900;color:var(--muted);
+  letter-spacing:.12em
+}
+.step.active .step-num{color:var(--hot)}
+.step-icon{font-size:18px;line-height:1;margin:3px 0 2px}
+.step-label{
+  font-size:10px;font-weight:900;letter-spacing:.03em;
+  line-height:1.15;color:var(--text);
+  word-break:break-word
+}
+.step-arrow{
+  display:flex;align-items:center;color:var(--muted);
+  font-size:13px;font-weight:900;flex-shrink:0
+}
+
+/* ── CUT LINE ── */
+.cutline{
+  background:linear-gradient(160deg,#2a1418,#1f1216);
+  border:1px solid var(--hot);border-radius:14px;
+  padding:11px 13px;margin:8px 0
+}
+.cutline-label{
+  font-size:11px;font-weight:900;letter-spacing:.1em;
+  color:var(--hot);margin-bottom:4px;text-transform:uppercase
+}
+.cutline-text{font-size:14px;font-weight:700;line-height:1.4;color:var(--text)}
+
+.row.current-block{background:#1f1711;border-radius:10px;padding-left:6px;padding-right:6px}
+.row.past-block{opacity:.55}
+
+/* ── TIMEBOX EMPHASIS ── */
+.timebox{
+  font-size:12px;font-weight:900;letter-spacing:.04em;
+  color:var(--amber);margin-right:6px
+}
 
 /* ── LOCAL-ONLY NOTICE ── */
 .local-notice{
@@ -191,23 +246,98 @@ details.low   .s-badge{color:var(--muted2)}
   <!-- STICKY HEADER -->
   <div class="top">
     <div class="hero">
-      <div class="kicker">PLAN Z · DAY-OF-FLIGHT · JUNE 3 2026</div>
-      <div class="hero-title">Sertraline → ALDO bag → pack/close suitcase. No rabbit holes.</div>
-      <div class="hero-sub">
-        Updated 2026-06-03 15:58 EDT · Flight tonight ~11:30 pm
-        &nbsp;·&nbsp; Checkboxes are local-only (your phone)
+      <div class="kicker">PLAN Z · LEAVE BY 8 PM · FLIGHT ~11:30 PM</div>
+      <h1 class="hero-title">Priority chain — do these in order, nothing else.</h1>
+
+      <!-- 4-STEP COCKPIT -->
+      <div class="cockpit" aria-label="Priority chain">
+        <div class="step active">
+          <div class="step-num">1 · NOW</div>
+          <div class="step-icon">💊</div>
+          <div class="step-label">MED REFILL</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-icon">👜</div>
+          <div class="step-label">ALDO BAG</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">🧳</div>
+          <div class="step-label">PACK/CLOSE</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">4 · 8 PM</div>
+          <div class="step-icon">🚪</div>
+          <div class="step-label">LEAVE</div>
+        </div>
       </div>
-      <div class="progress"><div class="bar"></div></div>
+
       <div class="chips">
-        <span class="chip hot">3 DO NOW</span>
-        <span class="chip amber">4 BEFORE AIRPORT</span>
-        <span class="chip lock">SAFETY RULES</span>
-        <span class="chip blue">XOTWOD →</span>
-        <span class="chip green">4 DONE</span>
-        <span class="chip blue">PACKING</span>
+        <span class="chip hot" id="time-status">TIME CHECK</span>
+        <span class="chip amber">LEAVE BY 8 PM</span>
+        <span class="chip lock">SAFETY RULES ↓</span>
+        <span class="chip blue">RHYTHM ↓</span>
+      </div>
+      <div class="hero-sub" style="margin-top:8px">
+        Checkboxes save to this phone only · not synced · not approval
       </div>
     </div>
   </div>
+
+  <!-- ══ CUT LINE · MINIMUM VIABLE TRIP ══ -->
+  <div class="cutline">
+    <div class="cutline-label">⚠️ Cut line · if overwhelmed, do only this</div>
+    <div class="cutline-text">
+      True minimum: critical meds + travel docs + wallet/cards + phone + chargers/power bank + close suitcase + leave.
+      ALDO is next-priority only if it does not threaten packing or the 8 pm exit.
+    </div>
+  </div>
+
+  <!-- ══ RHYTHM · 4 TIMEBOXES TO 8 PM ══ -->
+  <details class="amber" open>
+    <summary>
+      <div class="s-left">
+        <div class="s-title"><span class="s-icon">⏱️</span> RHYTHM · 4 timeboxes to 8 pm</div>
+        <div class="s-source">stay in the current block · no rabbit holes</div>
+      </div>
+      <span class="s-badge">timed</span>
+    </summary>
+    <div class="local-notice">If a block ends and tasks remain, drop the optional ones and move on. Don't stretch a block by stealing from the next one.</div>
+    <div class="items">
+      <div class="row" data-block="255-330">
+        <input type="checkbox" class="cb persistent" data-key="rhythm-block-1" aria-label="Block 1 errands">
+        <div>
+          <div class="task"><span class="timebox">4:15–5:30 pm</span>Hard-closing errands. Critical med refill FIRST, then ALDO bag. RBC only if branch is already easy. No new errands.</div>
+          <div class="meta"><span class="pill guardrail">Closing windows</span><span class="pill now auto-current">Auto-highlighted on phone</span></div>
+        </div>
+      </div>
+      <div class="row" data-block="330-435">
+        <input type="checkbox" class="cb persistent" data-key="rhythm-block-2" aria-label="Block 2 packing">
+        <div>
+          <div class="task"><span class="timebox">5:30–7:15 pm</span>Packing lock. Suitcase open, packing list in hand, zip it closed by 7:15. No errands during this block.</div>
+          <div class="meta"><span class="pill guardrail">Non-negotiable</span></div>
+        </div>
+      </div>
+      <div class="row" data-block="435-480">
+        <input type="checkbox" class="cb persistent" data-key="rhythm-block-3" aria-label="Block 3 sweep">
+        <div>
+          <div class="task"><span class="timebox">7:15–8:00 pm</span>Final sweep + leave. Phone/laptop/chargers on body, passports in hand, lights off, door locked, in transit by 8:00.</div>
+          <div class="meta"><span class="pill guardrail">Hard deadline</span></div>
+        </div>
+      </div>
+      <div class="row" data-block="480-999">
+        <input type="checkbox" class="cb persistent" data-key="rhythm-block-4" aria-label="Block 4 airport">
+        <div>
+          <div class="task"><span class="timebox">After security</span>Airport tasks only. Duty-free alcohol, water bottle fill, charge, snack. VPN/maps/Cyrillic address if not done at home.</div>
+          <div class="meta"><span class="pill">Post-security</span></div>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <!-- ══ 1. NOW ══ SISTER_GIFT_NOW -->
   <details class="hot" open>
@@ -216,15 +346,15 @@ details.low   .s-badge{color:var(--muted2)}
         <div class="s-title"><span class="s-icon">🔴</span> DO NOW · before shops/banks close</div>
         <div class="s-source">hardest deadlines first · user-confirmed at 4 pm travel day</div>
       </div>
-      <span class="s-badge">3 urgent</span>
+      <span class="s-badge">3 urgent + ETA watch</span>
     </summary>
     <div class="local-notice">Checkboxes save to this phone only · not synced · not approval</div>
     <div class="items">
 
-      <div class="row" id="r-sertraline">
-        <input type="checkbox" class="cb persistent" data-key="sertraline-refill" aria-label="Sertraline refill">
+      <div class="row" id="r-critical-med">
+        <input type="checkbox" class="cb persistent" data-key="critical-med-refill" aria-label="Critical medication refill">
         <div>
-          <div class="task">Sertraline refill — call/go immediately. This is the tightest deadline before pharmacy closes.</div>
+          <div class="task">Critical medication refill — call/go immediately. This is the tightest deadline before pharmacy closes.</div>
           <div class="meta">
             <span class="pill">Owner: Maria</span>
             <span class="pill guardrail">Hard deadline</span>
@@ -246,19 +376,26 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row" id="r-rbc">
         <input type="checkbox" class="cb persistent" data-key="rbc-cash" aria-label="RBC cash">
         <div>
-          <div class="task">Call RBC for USD/EUR cash if branch timing still works. If not, skip — airport/Moscow exchange is worse rate but not a blocker.</div>
+          <div class="task">RBC USD/EUR cash — only if a branch is already easy and on the way. If not, skip. Airport/Moscow exchange is a worse rate but not a blocker.</div>
           <div class="meta">
             <span class="pill">Owner: Maria</span>
-            <span class="pill">Optional if time survives</span>
+            <span class="pill drop">DROPPABLE</span>
             <span class="pill">Status: FLEX</span>
           </div>
+        </div>
+      </div>
+      <div class="row locked-item" id="r-uk-eta">
+        <input type="checkbox" class="cb" disabled aria-label="UK ETA watch still pending">
+        <div>
+          <div class="task">Travel-doc watch: UK ETA approval is still being monitored. If you already have it elsewhere, keep proof with travel docs.</div>
+          <div class="meta"><span class="pill guardrail">Watch item</span><span class="pill">No action unless approval appears</span></div>
         </div>
       </div>
     </div>
   </details>
 
   <!-- ══ 2. AIRPORT / DUTY-FREE ══ -->
-  <details class="amber" open>
+  <details class="amber">
     <summary>
       <div class="s-left">
         <div class="s-title"><span class="s-icon">🟡</span> BEFORE AIRPORT · leave by ~8 pm</div>
@@ -292,16 +429,23 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row" id="r-olaplex">
         <input type="checkbox" class="cb persistent" data-key="olaplex" aria-label="Olaplex optional">
         <div>
-          <div class="task">Olaplex No. 6 only if same-day pickup works. If not, skip — not a trip blocker.</div>
-          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill">Optional</span><span class="pill">Status: FLEX</span></div>
+          <div class="task">Olaplex No. 6 — only if same-day pickup is already lined up. Otherwise skip, buy after landing.</div>
+          <div class="meta"><span class="pill">Owner: Maria</span><span class="pill drop">DROPPABLE</span><span class="pill">Status: FLEX</span></div>
+        </div>
+      </div>
+      <div class="row" id="r-shopping">
+        <input type="checkbox" class="cb persistent" data-key="extra-shopping" aria-label="Extra shopping">
+        <div>
+          <div class="task">Any extra "while I'm out" shopping — drop it. Critical med refill and ALDO only. Everything else waits for Moscow.</div>
+          <div class="meta"><span class="pill drop">DROPPABLE</span><span class="pill guardrail">No new errands</span></div>
         </div>
       </div>
     </div>
   </details>
 
 
-  <!-- ══ 2B. PACKING CHECKLIST · PACKING_LIST_EXPANDED ══ -->
-  <details class="amber" open>
+  <!-- ══ 2B. PACKING CHECKLIST · PACKING_LIST_EXPANDED ADHD_AIRPORT_COCKPIT PUBLIC_SAFE_CUTLINE ══ -->
+  <details class="amber">
     <summary>
       <div class="s-left">
         <div class="s-title"><span class="s-icon">🧳</span> PACKING · suitcase + carry-on</div>
@@ -309,15 +453,15 @@ details.low   .s-badge{color:var(--muted2)}
       </div>
       <span class="s-badge">checklist</span>
     </summary>
-    <div class="local-notice">Keep meds, passports, cash, wallet, chargers, and power bank ON you. Public-safe wording: prescription names mostly collapsed.</div>
+    <div class="local-notice">Keep critical meds, travel docs, wallet/cards, phone, chargers, and power bank ON you. Public-safe checklist; full private detail stays in Maria_OS.</div>
     <div class="items">
-      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-meds" aria-label="Pack meds"><div><div class="task">Meds in carry-on, original packaging + Rx labels: all prescriptions/full supply, sertraline refill, sleep aids/melatonin.</div><div class="meta"><span class="pill guardrail">Carry-on</span><span class="pill">Status: OPEN</span></div></div></div>
-      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-docs-money" aria-label="Pack documents and money"><div><div class="task">Documents/money: Canadian passport, Russian external + internal passports, Swiss passport, Priority Pass, credit cards, cash, zip wallet.</div><div class="meta"><span class="pill guardrail">Do not check</span><span class="pill">Status: OPEN</span></div></div></div>
-      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-tech" aria-label="Pack tech"><div><div class="task">Tech: laptop + charger, phone charger, watch charger, mouse/pad, Sennheiser headphones, adapter Type C/F 220V, Oculus + charger, portable charger, portable monitor if worth it.</div><div class="meta"><span class="pill">Power banks carry-on</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-meds" aria-label="Pack meds"><div><div class="task">Critical meds in carry-on, original packaging + Rx labels: full required supply plus refill picked up today.</div><div class="meta"><span class="pill guardrail">Carry-on</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-docs-money" aria-label="Pack documents and money"><div><div class="task">Documents/money: all passports/travel documents, Priority Pass, credit cards, cash, zip wallet.</div><div class="meta"><span class="pill guardrail">Do not check</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-tech" aria-label="Pack tech"><div><div class="task">Tech: laptop + charger, phone charger, watch charger, mouse/pad, Sennheiser headphones, adapter Type C/F 220V, Oculus + charger, portable charger. Portable monitor only if it lands in the bag without slowing packing — otherwise skip.</div><div class="meta"><span class="pill">Power banks carry-on</span><span class="pill drop">Monitor DROPPABLE</span><span class="pill">Status: OPEN</span></div></div></div>
       <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-gifts" aria-label="Pack gifts"><div><div class="task">Gifts: Seadreamm bag + charm, SkinGenie gua sha, derma roller, XO chain, duty-free alcohol plan. Cross-check gifts dashboard if needed.</div><div class="meta"><span class="pill">One Moscow gift zone</span><span class="pill">Status: OPEN</span></div></div></div>
-      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-toiletries" aria-label="Pack toiletries"><div><div class="task">Toiletries/makeup: toothbrush/paste, hairbrush, deodorant, shampoo/conditioner if taking, skincare, makeup/remover, razor, sunscreen, perfume, tampons, glasses + backup, sunglasses, nail kit/tweezers in checked bag.</div><div class="meta"><span class="pill">Liquids & sharp items rules</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-toiletries" aria-label="Pack toiletries"><div><div class="task">Toiletries/makeup: toothbrush/paste, hairbrush, deodorant, shampoo/conditioner if taking, skincare, makeup/remover, razor, sunscreen, perfume, tampons, glasses + backup, sunglasses, nail kit/tweezers in checked bag.</div><div class="meta"><span class="pill">Liquids &amp; sharp items rules</span><span class="pill">Status: OPEN</span></div></div></div>
       <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-clothes" aria-label="Pack clothing"><div><div class="task">Clothing: 6-7 tops, 2-3 dresses, 2 trousers + 1-2 shorts/skirts, 1-2 light sweaters/cardigans, rain layer, underwear/socks 8+ days, swimsuit, pajamas, sneakers, cherry platforms, comfy everyday shoes, compact umbrella.</div><div class="meta"><span class="pill">Pack light; shop there</span><span class="pill">Status: OPEN</span></div></div></div>
-      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-flight" aria-label="Pack flight carry-on"><div><div class="task">Flight/carry-on: neck pillow, sleeping mask, earplugs, empty water bottle, snacks, chargers/power bank, sleep med within reach, sex toy battery out if detachable.</div><div class="meta"><span class="pill guardrail">Carry-on essentials</span><span class="pill">Status: OPEN</span></div></div></div>
+      <div class="row"><input type="checkbox" class="cb persistent" data-key="pack-flight" aria-label="Pack flight carry-on"><div><div class="task">Flight/carry-on: neck pillow, sleeping mask, earplugs, empty water bottle, snacks, chargers/power bank, and any personal items packed safely.</div><div class="meta"><span class="pill guardrail">Carry-on essentials</span><span class="pill">Status: OPEN</span></div></div></div>
     </div>
   </details>
 
@@ -375,56 +519,17 @@ details.low   .s-badge{color:var(--muted2)}
     </summary>
     <div class="items">
       <div class="row locked-item">
-        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <input type="checkbox" class="cb" disabled aria-label="business exceptions tracked elsewhere">
         <div>
-          <div class="task">#1055 Eduardo: ship-prep. Needs moissanite Silver / Tennis Chain 22in 3mm — exact photos + weight/dimensions required before any label approval.</div>
-          <div class="meta">
-            <span class="pill">Owner: Husband/Maria</span>
-            <span class="pill gate">Label/message/fulfillment GATED</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
+          <div class="task">Business shipping/customer exceptions are tracked off-dashboard. Do not touch them before the airport unless Maria explicitly reopens that lane.</div>
+          <div class="meta"><span class="pill gate">Messages/labels/refunds gated</span><span class="pill">Status: PARKED TODAY</span></div>
         </div>
       </div>
       <div class="row locked-item">
-        <input type="checkbox" class="cb" disabled aria-label="locked">
+        <input type="checkbox" class="cb" disabled aria-label="business stock ads tracked elsewhere">
         <div>
-          <div class="task">#1054 Ana: label created, no carrier intake. Find original parcel/drop proof before any resend.</div>
-          <div class="meta">
-            <span class="pill">Owner: Husband/Maria</span>
-            <span class="pill gate">Resend/customer action GATED</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
-        </div>
-      </div>
-      <div class="row locked-item">
-        <input type="checkbox" class="cb" disabled aria-label="locked">
-        <div>
-          <div class="task">#1050 Caige: customs/docs exception. Gather customs packet; no blind resend.</div>
-          <div class="meta">
-            <span class="pill">Owner: Husband/Maria</span>
-            <span class="pill gate">Carrier/customer action GATED</span>
-            <span class="pill">Status: OPEN</span>
-          </div>
-        </div>
-      </div>
-      <div class="row done-item">
-        <input type="checkbox" class="cb" disabled aria-label="done">
-        <div>
-          <div class="task">#1056 Kyla: delivered June 1. Do not reship.</div>
-          <div class="meta">
-            <span class="pill">Owner: Hermes/Maria</span>
-            <span class="pill ok">Status: DELIVERED · DONE</span>
-          </div>
-        </div>
-      </div>
-      <div class="row locked-item">
-        <input type="checkbox" class="cb" disabled aria-label="locked">
-        <div>
-          <div class="task">3 CZ tennis units: truthful CZ-only fast-ship ads are OK. Not a moissanite substitute unless explicitly approved.</div>
-          <div class="meta">
-            <span class="pill guardrail">Ads/stock/customer claims GATED</span>
-            <span class="pill">Status: GUARDRAIL</span>
-          </div>
+          <div class="task">Stock/ads/product edits are not flight-day work. Keep this page for getting out the door.</div>
+          <div class="meta"><span class="pill gate">Ads/stock/product actions gated</span><span class="pill">Status: PARKED TODAY</span></div>
         </div>
       </div>
     </div>
@@ -461,7 +566,7 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row done-item">
         <input type="checkbox" class="cb" disabled aria-label="done">
         <div>
-          <div class="task">Credit cards paid or scheduled.</div>
+          <div class="task">Finance/admin items already handled or parked.</div>
           <div class="meta">
             <span class="pill ok">Status: DONE · verified file</span>
           </div>
@@ -470,7 +575,7 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row done-item">
         <input type="checkbox" class="cb" disabled aria-label="done">
         <div>
-          <div class="task">AMEX export/audit completed for visible cards; canceled-card months unavailable.</div>
+          <div class="task">Card/account audit work is parked unless explicitly reopened.</div>
           <div class="meta">
             <span class="pill">Owner: Hermes</span>
             <span class="pill ok">Status: DONE · verified file</span>
@@ -495,7 +600,7 @@ details.low   .s-badge{color:var(--muted2)}
       <div class="row">
         <input type="checkbox" class="cb" disabled aria-label="project status">
         <div>
-          <div class="task">Plan Z: flight-day physical lock — sertraline refill, ALDO sister gift pickup, suitcase packing, charge/VPN/maps, duty-free alcohol, and UK ETA approval watch.</div>
+          <div class="task">Plan Z: flight-day physical lock — critical med refill, ALDO sister gift pickup, suitcase packing, charge/VPN/maps, duty-free alcohol, and UK ETA approval watch.</div>
           <div class="meta">
             <span class="pill guardrail">Today only</span>
             <span class="pill">Status: ACTIVE</span>
@@ -596,8 +701,8 @@ details.low   .s-badge{color:var(--muted2)}
 <!-- FIXED FOOTER -->
 <div class="footer">
   <div class="footer-inner">
-    <span>Maya couch → sister gift → suitcase. No rabbit holes.</span>
-    <span class="footer-sub">Jun 3 · ~10 pm Moscow</span>
+    <span>Med refill → ALDO if safe → suitcase → leave. No rabbit holes.</span>
+    <span class="footer-sub">Jun 3 · leave by 8</span>
   </div>
 </div>
 
@@ -615,6 +720,38 @@ details.low   .s-badge{color:var(--muted2)}
       localStorage.setItem(key, cb.checked ? '1' : '0');
     });
   });
+
+  // Make whole rows tappable on phone without treating disabled/gated rows as approval.
+  document.querySelectorAll('.row').forEach(function(row){
+    row.addEventListener('click', function(e){
+      if(e.target && e.target.tagName === 'INPUT') return;
+      var cb = row.querySelector('.cb.persistent:not(:disabled)');
+      if(!cb) return;
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event('change', {bubbles:true}));
+    });
+  });
+
+  // Time helper: browser-local, only changes the label/highlight. It does not approve or sync anything.
+  function updateTimeBlock(){
+    var now = new Date();
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var status = document.getElementById('time-status');
+    var label = 'TIME CHECK';
+    if(mins < 330) label = 'ERRANDS UNTIL 5:30';
+    else if(mins < 435) label = 'PACK UNTIL 7:15';
+    else if(mins < 480) label = 'FINAL SWEEP';
+    else label = 'LEAVE / AIRPORT';
+    if(status) status.textContent = label;
+    document.querySelectorAll('[data-block]').forEach(function(row){
+      var parts = row.dataset.block.split('-').map(Number);
+      row.classList.remove('current-block','past-block');
+      if(mins >= parts[0] && mins < parts[1]) row.classList.add('current-block');
+      if(mins >= parts[1]) row.classList.add('past-block');
+    });
+  }
+  updateTimeBlock();
+  setInterval(updateTimeBlock, 60000);
 })();
 </script>
 </body>
